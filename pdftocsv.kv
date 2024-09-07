@@ -1,0 +1,56 @@
+<BoxLayout>:
+    orientation: 'vertical'
+    padding: [10, 10, 10, 10]  # Adjust padding for mobile screens
+    spacing: 20  # Space between widgets
+
+    canvas.before:
+        Color:
+            rgba: 0.02, 0.12, 0.26, 1  # Cyan color in RGBA
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Widget:
+        size_hint_y: None
+        height: dp(10)  # Spacer widget to push button down
+
+    Button:
+        text: 'Convert PDF to CSV'
+        size_hint: (None, None)
+        size: (dp(250), dp(50))  # Set button size with dp
+        pos_hint: {"center_x": .5}  # Center button horizontally
+        on_press: app.convert_pdf_to_csv(self)
+        color: 0.090, 0.824, 0.922, 1  # RGB color for text
+        font_size: dp(18)  # Adjust font size with dp
+
+    Button:
+        text: 'Select PDF File'
+        size_hint: (None, None)
+        size: (dp(200), dp(50))  # Button size
+        pos_hint: {"center_x": .5}
+        on_press: app.open_file_picker(self)
+        color: 0.090, 0.824, 0.922, 1  # RGB color for text
+        font_size: dp(18)  # Adjust font size with dp
+
+    Label:
+        id: status_label
+        text: 'Select a PDF file and press "Convert"'
+        size_hint_y: None
+        height: dp(60)  # Use dp for density-independent pixels
+        color: 0.090, 0.824, 0.922, 1  # RGB color for text
+        font_size: dp(24)  # Adjust font size with dp
+        bold: True  # Make text bold
+        halign: 'center'  # Center align text horizontally
+        text_size: self.width - dp(20), None  # Wrap text within width minus padding
+
+    Widget:
+        size_hint_y: None
+        height: dp(0)  # Spacer widget to push button down
+
+    Label:
+        text: 'Made by Mahit Shah'
+        size_hint_y: None
+        height: dp(200)  # Height of the static label
+        color: 0.5, 0.5, 0.5, 1  # Grey color for the label text
+        font_size: dp(22)  # Adjust font size with dp
+        halign: 'center'  # Center align text horizontally
